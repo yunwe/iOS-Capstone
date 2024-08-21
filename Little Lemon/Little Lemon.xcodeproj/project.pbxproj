@@ -11,6 +11,11 @@
 		E5CD210E2C75F3FE00F152CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD210D2C75F3FE00F152CE /* ContentView.swift */; };
 		E5CD21102C75F3FF00F152CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5CD210F2C75F3FF00F152CE /* Assets.xcassets */; };
 		E5CD21132C75F3FF00F152CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5CD21122C75F3FF00F152CE /* Preview Assets.xcassets */; };
+		E5CD211D2C75F48000F152CE /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD211C2C75F48000F152CE /* Onboarding.swift */; };
+		E5CD21212C75FAF400F152CE /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21202C75FAF400F152CE /* Verification.swift */; };
+		E5CD21232C7611C700F152CE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21222C7611C700F152CE /* Home.swift */; };
+		E5CD21252C7612FD00F152CE /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21242C7612FD00F152CE /* Menu.swift */; };
+		E5CD21272C7621B800F152CE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21262C7621B800F152CE /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		E5CD210D2C75F3FE00F152CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E5CD210F2C75F3FF00F152CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5CD21122C75F3FF00F152CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E5CD211C2C75F48000F152CE /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		E5CD21202C75FAF400F152CE /* Verification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verification.swift; sourceTree = "<group>"; };
+		E5CD21222C7611C700F152CE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		E5CD21242C7612FD00F152CE /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		E5CD21262C7621B800F152CE /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +61,10 @@
 		E5CD210A2C75F3FE00F152CE /* Little Lemon */ = {
 			isa = PBXGroup;
 			children = (
+				E5CD211F2C75FAE800F152CE /* Apps */,
+				E5CD211E2C75FAC700F152CE /* Models */,
+				E5CD21192C75F43C00F152CE /* Views */,
 				E5CD210B2C75F3FE00F152CE /* Little_LemonApp.swift */,
-				E5CD210D2C75F3FE00F152CE /* ContentView.swift */,
 				E5CD210F2C75F3FF00F152CE /* Assets.xcassets */,
 				E5CD21112C75F3FF00F152CE /* Preview Content */,
 			);
@@ -65,6 +77,33 @@
 				E5CD21122C75F3FF00F152CE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E5CD21192C75F43C00F152CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5CD210D2C75F3FE00F152CE /* ContentView.swift */,
+				E5CD211C2C75F48000F152CE /* Onboarding.swift */,
+				E5CD21222C7611C700F152CE /* Home.swift */,
+				E5CD21242C7612FD00F152CE /* Menu.swift */,
+				E5CD21262C7621B800F152CE /* UserProfile.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5CD211E2C75FAC700F152CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5CD211F2C75FAE800F152CE /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				E5CD21202C75FAF400F152CE /* Verification.swift */,
+			);
+			path = Apps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5CD21252C7612FD00F152CE /* Menu.swift in Sources */,
+				E5CD21212C75FAF400F152CE /* Verification.swift in Sources */,
+				E5CD21272C7621B800F152CE /* UserProfile.swift in Sources */,
+				E5CD211D2C75F48000F152CE /* Onboarding.swift in Sources */,
+				E5CD21232C7611C700F152CE /* Home.swift in Sources */,
 				E5CD210E2C75F3FE00F152CE /* ContentView.swift in Sources */,
 				E5CD210C2C75F3FE00F152CE /* Little_LemonApp.swift in Sources */,
 			);
