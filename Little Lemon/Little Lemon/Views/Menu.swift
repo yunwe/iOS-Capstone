@@ -9,22 +9,30 @@ import SwiftUI
 
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
+    
+    @State private var searchString = ""
     @State private var haveMenu = false
+    
     
     var body: some View {
         VStack{
             Text("Little Lemon")
             Text("Chicago")
-            Text("a short description of the whole application below the previous two fields. ")
+            Text("a short description of the whole application below the previous two fields.")
+                .padding(.horizontal)
             
-            FetchedObjects(
-                sortDescriptors: buildSortDescriptors()
-            ) { (dishes: [Dish]) in
-                List{
-                    ForEach(dishes){dish in
-                        DishItem(dish: dish)
+            NavigationView() {
+                FetchedObjects(
+                    predicate: buildPredicate(),
+                    sortDescriptors: buildSortDescriptors()
+                ) { (dishes: [Dish]) in
+                    List{
+                        ForEach(dishes){dish in
+                            DishItem(dish: dish)
+                        }
                     }
                 }
+                .searchable(text: $searchString, prompt: Text("Search Menu..."))
             }
             .onAppear(){
                 if(haveMenu)
@@ -79,6 +87,14 @@ struct Menu: View {
     private func buildSortDescriptors() -> [NSSortDescriptor]{
         [NSSortDescriptor(key: "title", ascending: true, selector:  #selector(NSString.localizedStandardCompare))]
     }
+    
+    private func buildPredicate() -> NSPredicate{
+        if(Verification.isEmpty(searchString))
+        {
+            return NSPredicate(value: true)
+        }
+        return NSPredicate(format: "title CONTAINS[cd] %@", searchString)
+    }
 }
 
 
@@ -89,31 +105,28 @@ private struct DishItem : View{
         NavigationLink {
             Detail(dish: dish)
         } label: {
-            VStack{
+            HStack{
                 if let imagePath = dish.image {
                     AsyncImage(url: URL(string: imagePath)){image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(height: 250)
+                            .frame(width: 72, height: 50)
                             .clipped()
                     }placeholder: {
                         ProgressView()
                     }
+                    .frame(width: 72, height: 50)
                 }
                 else{
                     Color(.green)
                         .frame(width: .infinity, height: 250)
                 }
-                
-                
-                HStack{
-                    Text(dish.title ?? "")
-                    Spacer()
-                    Text(dish.price ?? "0")
-                        .monospaced()
-                        .font(.callout)
-                }
+                Text(dish.title ?? "")
+                Spacer()
+                Text(dish.price ?? "0")
+                    .monospaced()
+                    .font(.callout)
             }
         }
     }
