@@ -22,6 +22,8 @@
 		E5CD212F2C76DC9200F152CE /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD212E2C76DC9200F152CE /* MenuItem.swift */; };
 		E5CD21322C76F01C00F152CE /* ExampleDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21302C76F01C00F152CE /* ExampleDatabase.xcdatamodeld */; };
 		E5CD21342C76F6FF00F152CE /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21332C76F6FF00F152CE /* Detail.swift */; };
+		E5CD213A2C77491200F152CE /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21392C77491200F152CE /* Hero.swift */; };
+		E5CD213E2C77529100F152CE /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD213D2C77529100F152CE /* UIKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		E5CD212E2C76DC9200F152CE /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		E5CD21312C76F01C00F152CE /* ExampleDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleDatabase.xcdatamodel; sourceTree = "<group>"; };
 		E5CD21332C76F6FF00F152CE /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		E5CD21392C77491200F152CE /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		E5CD213D2C77529100F152CE /* UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				E5CD21242C7612FD00F152CE /* Menu.swift */,
 				E5CD21262C7621B800F152CE /* UserProfile.swift */,
 				E5CD21332C76F6FF00F152CE /* Detail.swift */,
+				E5CD21392C77491200F152CE /* Hero.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				E5CD21202C75FAF400F152CE /* Verification.swift */,
+				E5CD213D2C77529100F152CE /* UIKit.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -199,12 +205,14 @@
 				E5CD21212C75FAF400F152CE /* Verification.swift in Sources */,
 				E5CD21272C7621B800F152CE /* UserProfile.swift in Sources */,
 				E5CD211D2C75F48000F152CE /* Onboarding.swift in Sources */,
+				E5CD213A2C77491200F152CE /* Hero.swift in Sources */,
 				E5CD212A2C76DBE400F152CE /* FetchedObjects.swift in Sources */,
 				E5CD21232C7611C700F152CE /* Home.swift in Sources */,
 				E5CD210E2C75F3FE00F152CE /* ContentView.swift in Sources */,
 				E5CD212F2C76DC9200F152CE /* MenuItem.swift in Sources */,
 				E5CD21322C76F01C00F152CE /* ExampleDatabase.xcdatamodeld in Sources */,
 				E5CD212D2C76DC8600F152CE /* MenuList.swift in Sources */,
+				E5CD213E2C77529100F152CE /* UIKit.swift in Sources */,
 				E5CD210C2C75F3FE00F152CE /* Little_LemonApp.swift in Sources */,
 				E5CD21342C76F6FF00F152CE /* Detail.swift in Sources */,
 			);

@@ -10,23 +10,42 @@ import SwiftUI
 struct Home: View {
     let persistence = PersistenceController.shared
     
+    
     var body: some View {
-        TabView{
+        NavigationView {
             Menu()
-                .tag(0)
-                .tabItem {
-                    Label("Menu", systemImage: "list.dash")
+
+                .toolbar{
+                    ToolbarItem(placement: .principal){
+                        Text("Little Lemon")
+                            .font(.title)
+                            .foregroundStyle(.clear)
+                            .overlay{
+                                Image("Logo")
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                            .accessibilityElement(children: .combine)
+                            .accessibilityLabel("Little Lemon")
+                        
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            UserProfile()
+                        } label: {
+                            Image("profile-image-placeholder")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        }
+                    }
                 }
-                .environment(\.managedObjectContext, persistence.container.viewContext)
-            
-            UserProfile()
-                .tabItem {
-                    Label("Profile", systemImage: "square.and.pencil")
-                }
-                
         }
-        .navigationBarBackButtonHidden(true)
+        
     }
+        
+    
 }
 
 #Preview {

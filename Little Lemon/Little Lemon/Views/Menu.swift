@@ -16,10 +16,7 @@ struct Menu: View {
     
     var body: some View {
         VStack{
-            Text("Little Lemon")
-            Text("Chicago")
-            Text("a short description of the whole application below the previous two fields.")
-                .padding(.horizontal)
+            Hero()
             
             NavigationView() {
                 FetchedObjects(
