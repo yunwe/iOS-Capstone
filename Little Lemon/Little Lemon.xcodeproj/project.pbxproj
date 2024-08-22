@@ -16,6 +16,12 @@
 		E5CD21232C7611C700F152CE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21222C7611C700F152CE /* Home.swift */; };
 		E5CD21252C7612FD00F152CE /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21242C7612FD00F152CE /* Menu.swift */; };
 		E5CD21272C7621B800F152CE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21262C7621B800F152CE /* UserProfile.swift */; };
+		E5CD212A2C76DBE400F152CE /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21282C76DBE400F152CE /* FetchedObjects.swift */; };
+		E5CD212B2C76DBE400F152CE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21292C76DBE400F152CE /* Persistence.swift */; };
+		E5CD212D2C76DC8600F152CE /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD212C2C76DC8600F152CE /* MenuList.swift */; };
+		E5CD212F2C76DC9200F152CE /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD212E2C76DC9200F152CE /* MenuItem.swift */; };
+		E5CD21322C76F01C00F152CE /* ExampleDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21302C76F01C00F152CE /* ExampleDatabase.xcdatamodeld */; };
+		E5CD21342C76F6FF00F152CE /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21332C76F6FF00F152CE /* Detail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +35,12 @@
 		E5CD21222C7611C700F152CE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		E5CD21242C7612FD00F152CE /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E5CD21262C7621B800F152CE /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		E5CD21282C76DBE400F152CE /* FetchedObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
+		E5CD21292C76DBE400F152CE /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		E5CD212C2C76DC8600F152CE /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
+		E5CD212E2C76DC9200F152CE /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		E5CD21312C76F01C00F152CE /* ExampleDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleDatabase.xcdatamodel; sourceTree = "<group>"; };
+		E5CD21332C76F6FF00F152CE /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +73,15 @@
 		E5CD210A2C75F3FE00F152CE /* Little Lemon */ = {
 			isa = PBXGroup;
 			children = (
+				E5CD21282C76DBE400F152CE /* FetchedObjects.swift */,
+				E5CD21292C76DBE400F152CE /* Persistence.swift */,
 				E5CD211F2C75FAE800F152CE /* Apps */,
 				E5CD211E2C75FAC700F152CE /* Models */,
 				E5CD21192C75F43C00F152CE /* Views */,
 				E5CD210B2C75F3FE00F152CE /* Little_LemonApp.swift */,
 				E5CD210F2C75F3FF00F152CE /* Assets.xcassets */,
 				E5CD21112C75F3FF00F152CE /* Preview Content */,
+				E5CD21302C76F01C00F152CE /* ExampleDatabase.xcdatamodeld */,
 			);
 			path = "Little Lemon";
 			sourceTree = "<group>";
@@ -87,6 +102,7 @@
 				E5CD21222C7611C700F152CE /* Home.swift */,
 				E5CD21242C7612FD00F152CE /* Menu.swift */,
 				E5CD21262C7621B800F152CE /* UserProfile.swift */,
+				E5CD21332C76F6FF00F152CE /* Detail.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -94,6 +110,8 @@
 		E5CD211E2C75FAC700F152CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E5CD212C2C76DC8600F152CE /* MenuList.swift */,
+				E5CD212E2C76DC9200F152CE /* MenuItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,13 +194,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5CD212B2C76DBE400F152CE /* Persistence.swift in Sources */,
 				E5CD21252C7612FD00F152CE /* Menu.swift in Sources */,
 				E5CD21212C75FAF400F152CE /* Verification.swift in Sources */,
 				E5CD21272C7621B800F152CE /* UserProfile.swift in Sources */,
 				E5CD211D2C75F48000F152CE /* Onboarding.swift in Sources */,
+				E5CD212A2C76DBE400F152CE /* FetchedObjects.swift in Sources */,
 				E5CD21232C7611C700F152CE /* Home.swift in Sources */,
 				E5CD210E2C75F3FE00F152CE /* ContentView.swift in Sources */,
+				E5CD212F2C76DC9200F152CE /* MenuItem.swift in Sources */,
+				E5CD21322C76F01C00F152CE /* ExampleDatabase.xcdatamodeld in Sources */,
+				E5CD212D2C76DC8600F152CE /* MenuList.swift in Sources */,
 				E5CD210C2C75F3FE00F152CE /* Little_LemonApp.swift in Sources */,
+				E5CD21342C76F6FF00F152CE /* Detail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +412,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E5CD21302C76F01C00F152CE /* ExampleDatabase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E5CD21312C76F01C00F152CE /* ExampleDatabase.xcdatamodel */,
+			);
+			currentVersion = E5CD21312C76F01C00F152CE /* ExampleDatabase.xcdatamodel */;
+			name = ExampleDatabase.xcdatamodeld;
+			path = "/Users/yunwe/Projects/playground/iOS-Capstone/Little Lemon/Little Lemon/ExampleDatabase.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E5CD21002C75F3FE00F152CE /* Project object */;
 }
