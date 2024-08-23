@@ -19,9 +19,13 @@ class Verification{
     }
 
     
-    static func isEmpty(_ input: String) -> Bool{
-        let input = input.trimmingCharacters(in: .whitespacesAndNewlines)
-        return input.isEmpty || input == ""
+    static func isEmpty(_ input: String?) -> Bool{
+        if let input = input{
+            let res = input.trimmingCharacters(in: .whitespacesAndNewlines)
+            return res.isEmpty || res == ""
+        }
+        
+        return true
     }
     
 }

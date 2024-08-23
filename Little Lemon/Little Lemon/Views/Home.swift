@@ -13,39 +13,42 @@ struct Home: View {
     
     var body: some View {
         NavigationView {
-            Menu()
-
-                .toolbar{
-                    ToolbarItem(placement: .principal){
-                        Text("Little Lemon")
-                            .font(.title)
-                            .foregroundStyle(.clear)
-                            .overlay{
-                                Image("Logo")
-                                    .resizable()
-                                    .scaledToFit()
-                            }
-                            .accessibilityElement(children: .combine)
-                            .accessibilityLabel("Little Lemon")
-                        
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            UserProfile()
-                        } label: {
-                            Image("profile-image-placeholder")
+            VStack{
+                Hero()
+                Menu()
+                    .environment(\.managedObjectContext, persistence.container.viewContext)
+            }
+            .navigationBarBackButtonHidden(true)
+            .toolbar{
+                ToolbarItem(placement: .principal){
+                    Text("Little Lemon")
+                        .font(.title)
+                        .foregroundStyle(.clear)
+                        .overlay{
+                            Image("Logo")
                                 .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 32, height: 32)
-                                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                                .scaledToFit()
                         }
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel("Little Lemon")
+                    
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        UserProfile()
+                    } label: {
+                        Image("profile-image-placeholder")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     }
                 }
+            }
+            .toolbarBackground(myGrey, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
         }
-        
     }
-        
-    
 }
 
 #Preview {
