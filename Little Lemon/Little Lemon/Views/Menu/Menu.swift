@@ -11,6 +11,8 @@ struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var searchString = ""
+    @State private var selectedCategory = ""
+    
     @State private var haveMenu = false
     
     
@@ -18,11 +20,15 @@ struct Menu: View {
        
         ScrollView(.vertical){
             VStack{
+                CategoryList(selected: $selectedCategory)
+                    .environment(\.managedObjectContext, viewContext)
+                
+                  
+                
                 FetchedObjects(
                     predicate: buildPredicate(),
                     sortDescriptors: buildSortDescriptors()
                 ) { (dishes: [Dish]) in
-                    CategoryList(dishes: dishes)
                     
                     ForEach(dishes){dish in
                         DishItem(dish: dish)
@@ -87,11 +93,23 @@ struct Menu: View {
     }
     
     private func buildPredicate() -> NSPredicate{
-        if(Verification.isEmpty(searchString))
+        if(Verification.isEmpty(searchString) && Verification.isEmpty(selectedCategory))
         {
             return NSPredicate(value: true)
         }
-        return NSPredicate(format: "title CONTAINS[cd] %@", searchString)
+        
+        let categoryPredicate = NSPredicate(format: "category == %@", selectedCategory)
+        let titlePredicate = NSPredicate(format: "title CONTAINS[cd] %@ ", searchString)
+        if(Verification.isEmpty(searchString))
+        {
+            return categoryPredicate
+        }
+        else if(Verification.isEmpty(selectedCategory))
+        {
+            return titlePredicate
+        }
+        
+        return NSCompoundPredicate(type: .and, subpredicates: [categoryPredicate, titlePredicate])
     }
 }
 

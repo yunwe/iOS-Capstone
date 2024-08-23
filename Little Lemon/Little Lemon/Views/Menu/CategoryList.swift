@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct CategoryList: View {
-    let dishes : [Dish]
-    @State private var selected : String = "abc"
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    
+    @Binding var selected : String
+    
+    @FetchRequest (sortDescriptors: [], animation: nil)
+        private var dishes : FetchedResults<Dish>
     
     var body: some View {
         VStack{
@@ -41,7 +46,8 @@ struct CategoryList: View {
             }
         }
         
-        let array = Array(categories)
+        let array = Array(categories).sorted()
+        
         return ScrollView(.horizontal){
             HStack{
                 ForEach(array, id: \.self){item in
@@ -72,31 +78,14 @@ struct CategoryItem : View{
 }
 
 struct CategoryList_Previews: PreviewProvider {
-    static let context = PersistenceController.shared.container.viewContext
-    let dish = Dish(context: context)
+    @State static private var selected : String = ""
     
+    
+    static let context = PersistenceController.shared.container.viewContext
     
     static var previews: some View {
-        
-        CategoryList(dishes: dishes())
+        CategoryList(selected: $selected)
+            .environment(\.managedObjectContext, context)
     }
     
-    static func dishes() -> [Dish] {
-        let dish1 = Dish(context: context)
-        dish1.title = "Burger"
-        dish1.image = "image"
-        dish1.price = "10"
-        dish1.category = "Lunch"
-        dish1.desc = "Lorem Ispam"
-        
-        
-        let dish2 = Dish(context: context)
-        dish2.title = "Burger"
-        dish2.image = "image"
-        dish2.price = "10"
-        dish2.category = "Fast Food"
-        dish2.desc = "Lorem Ispam"
-        
-        return [dish1, dish2]
-    }
 }
