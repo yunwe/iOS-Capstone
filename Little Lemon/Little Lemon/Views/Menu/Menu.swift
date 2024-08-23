@@ -11,30 +11,25 @@ struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var searchString = ""
-    @State private var selectedCategory = ""
+    @State private var searchByTitle : Bool = false
     
     @State private var haveMenu = false
     
     
     var body: some View {
        
-        ScrollView(.vertical){
-            VStack{
-                CategoryList(selected: $selectedCategory)
-                    .environment(\.managedObjectContext, viewContext)
+        VStack{
+            CategoryList(searchByTitle: $searchByTitle, searchString: $searchString)
+                .environment(\.managedObjectContext, viewContext)
+            
+            FetchedObjects(
+                predicate: buildPredicate(),
+                sortDescriptors: buildSortDescriptors()
+            ) { (dishes: [Dish]) in
                 
-                  
-                
-                FetchedObjects(
-                    predicate: buildPredicate(),
-                    sortDescriptors: buildSortDescriptors()
-                ) { (dishes: [Dish]) in
-                    
-                    ForEach(dishes){dish in
-                        DishItem(dish: dish)
-                    }
+                ForEach(dishes){dish in
+                    DishItem(dish: dish)
                 }
-                //   .searchable(text: $searchString, prompt: Text("Search Menu..."))
             }
         }
         
@@ -93,23 +88,16 @@ struct Menu: View {
     }
     
     private func buildPredicate() -> NSPredicate{
-        if(Verification.isEmpty(searchString) && Verification.isEmpty(selectedCategory))
-        {
+        if(Verification.isEmpty(searchString)){
             return NSPredicate(value: true)
         }
         
-        let categoryPredicate = NSPredicate(format: "category == %@", selectedCategory)
-        let titlePredicate = NSPredicate(format: "title CONTAINS[cd] %@ ", searchString)
-        if(Verification.isEmpty(searchString))
-        {
-            return categoryPredicate
+        if(searchByTitle){
+            return NSPredicate(format: "title CONTAINS[cd] %@ ", searchString)
         }
-        else if(Verification.isEmpty(selectedCategory))
-        {
-            return titlePredicate
+        else{
+            return NSPredicate(format: "category == %@", searchString)
         }
-        
-        return NSCompoundPredicate(type: .and, subpredicates: [categoryPredicate, titlePredicate])
     }
 }
 

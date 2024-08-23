@@ -12,7 +12,7 @@ let kIsLoggedIn : String = "KEY_IS_LOG_IN"
 
 import SwiftUI
 
-struct CustomTextFieldStyle: TextFieldStyle {
+private struct CustomTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding()

@@ -13,10 +13,12 @@ struct Home: View {
     
     var body: some View {
         NavigationView {
-            VStack{
-                Hero()
-                Menu()
-                    .environment(\.managedObjectContext, persistence.container.viewContext)
+            ScrollView{
+                VStack{
+                    Hero()
+                    Menu()
+                        .environment(\.managedObjectContext, persistence.container.viewContext)
+                }
             }
             .navigationBarBackButtonHidden(true)
             .toolbar{

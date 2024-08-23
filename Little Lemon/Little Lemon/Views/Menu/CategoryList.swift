@@ -7,13 +7,25 @@
 
 import SwiftUI
 
+private struct CustomTextFieldStyle: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .font(.title3)
+            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+            .background(myGrey) // Optional: background color for better visibility
+            .cornerRadius(8) // Rounded corners
+
+    }
+}
+
 struct CategoryList: View {
     @Environment(\.managedObjectContext) private var viewContext
     
+    @Binding var searchByTitle : Bool 
+    @Binding var searchString : String
     
-    @Binding var selected : String
     
-    @FetchRequest (sortDescriptors: [], animation: nil)
+    @FetchRequest (sortDescriptors: [], animation: .default)
         private var dishes : FetchedResults<Dish>
     
     var body: some View {
@@ -24,9 +36,31 @@ struct CategoryList: View {
                 .foregroundStyle(primary1)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             
-            buildCategories()
-                .padding(.bottom, 20)
-            
+            if(searchByTitle)
+            {
+                HStack{
+                    TextField("Search...", text: $searchString)
+                        .textFieldStyle(CustomTextFieldStyle())
+                    Button("Cancel"){
+                        searchString = ""
+                        searchByTitle.toggle()
+                    }
+                }
+                .padding(.bottom)
+                
+            }
+            else{
+                HStack(alignment: .center){
+                    searchButton
+                    Divider()
+                        .frame(width: 2, height: 40)
+                        .overlay(primary1)
+                    
+                    buildCategories()
+                }
+                .padding(.bottom)
+            }
+                
             
             Divider()
                 .frame(height: 2)
@@ -34,6 +68,21 @@ struct CategoryList: View {
          
         }
         .padding()
+    }
+    
+    var searchButton : some View{
+        Button(action: {
+            searchString = ""
+            searchByTitle.toggle()
+        }) {
+            Image(systemName: "magnifyingglass") // SF Symbol icon
+                .resizable()
+                .frame(width: 24, height: 24) // Adjust size
+                .foregroundColor(primary1) // Adjust color
+        }
+        .padding()
+        .background(Color.black.opacity(0.1))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
     
     private func buildCategories() -> some View
@@ -51,7 +100,7 @@ struct CategoryList: View {
         return ScrollView(.horizontal){
             HStack{
                 ForEach(array, id: \.self){item in
-                    CategoryItem(label: item, selected: $selected)
+                    CategoryItem(label: item, selected: $searchString)
                 }
             }
         }
@@ -79,12 +128,13 @@ struct CategoryItem : View{
 
 struct CategoryList_Previews: PreviewProvider {
     @State static private var selected : String = ""
+    @State static private var option : Bool = false
     
     
     static let context = PersistenceController.shared.container.viewContext
     
     static var previews: some View {
-        CategoryList(selected: $selected)
+        CategoryList(searchByTitle: $option, searchString: $selected)
             .environment(\.managedObjectContext, context)
     }
     
