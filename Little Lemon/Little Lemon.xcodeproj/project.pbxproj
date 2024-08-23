@@ -25,6 +25,7 @@
 		E5CD213A2C77491200F152CE /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21392C77491200F152CE /* Hero.swift */; };
 		E5CD213E2C77529100F152CE /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD213D2C77529100F152CE /* UIKit.swift */; };
 		E5CD21412C783A9700F152CE /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21402C783A9700F152CE /* CategoryList.swift */; };
+		E5CD21432C78AAA500F152CE /* UserProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21422C78AAA500F152CE /* UserProfileData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		E5CD21392C77491200F152CE /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		E5CD213D2C77529100F152CE /* UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
 		E5CD21402C783A9700F152CE /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
+		E5CD21422C78AAA500F152CE /* UserProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				E5CD212C2C76DC8600F152CE /* MenuList.swift */,
 				E5CD212E2C76DC9200F152CE /* MenuItem.swift */,
+				E5CD21422C78AAA500F152CE /* UserProfileData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				E5CD212B2C76DBE400F152CE /* Persistence.swift in Sources */,
 				E5CD21252C7612FD00F152CE /* Menu.swift in Sources */,
 				E5CD21212C75FAF400F152CE /* Verification.swift in Sources */,
+				E5CD21432C78AAA500F152CE /* UserProfileData.swift in Sources */,
 				E5CD21272C7621B800F152CE /* UserProfile.swift in Sources */,
 				E5CD211D2C75F48000F152CE /* Onboarding.swift in Sources */,
 				E5CD213A2C77491200F152CE /* Hero.swift in Sources */,

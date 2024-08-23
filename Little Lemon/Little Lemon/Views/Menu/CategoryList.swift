@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-private struct CustomTextFieldStyle: TextFieldStyle {
-    func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .font(.title3)
-            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-            .background(myGrey) // Optional: background color for better visibility
-            .cornerRadius(8) // Rounded corners
-
-    }
-}
 
 struct CategoryList: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -40,7 +30,7 @@ struct CategoryList: View {
             {
                 HStack{
                     TextField("Search...", text: $searchString)
-                        .textFieldStyle(CustomTextFieldStyle())
+                        .textFieldStyle(SearchFieldStyle())
                     Button("Cancel"){
                         searchString = ""
                         searchByTitle.toggle()
