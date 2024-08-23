@@ -35,9 +35,6 @@ struct Onboarding: View {
     var body: some View {
         NavigationStack{
             VStack{
-               
-                
-
                 TextField("First Name", text: $firstName)
                     .textFieldStyle(CustomTextFieldStyle())
                                
@@ -69,17 +66,17 @@ struct Onboarding: View {
     }
     
     private func register(){
-        if(Verification.isEmpty(firstName)
-           || Verification.isEmpty(lastName)
-           || Verification.isValidEmail(email)
-        ){
-            print("Invalid")
-            return
-        }
-        UserDefaults.standard.set(firstName, forKey: kFirstName)
-        UserDefaults.standard.set(lastName, forKey: kLastName)
-        UserDefaults.standard.set(email, forKey: kEmail)
-        UserDefaults.standard.set(true, forKey: kIsLoggedIn)
+//        if(Verification.isEmpty(firstName)
+//           || Verification.isEmpty(lastName)
+//           || Verification.isValidEmail(email)
+//        ){
+//            print("Invalid")
+//            return
+//        }
+//        UserDefaults.standard.set(firstName, forKey: kFirstName)
+//        UserDefaults.standard.set(lastName, forKey: kLastName)
+//        UserDefaults.standard.set(email, forKey: kEmail)
+//        UserDefaults.standard.set(true, forKey: kIsLoggedIn)
         
         isLoggedIn = true
         

@@ -53,7 +53,7 @@ struct CategoryList: View {
                 HStack(alignment: .center){
                     searchButton
                     Divider()
-                        .frame(width: 2, height: 40)
+                        .frame(width: 1, height: 30)
                         .overlay(primary1)
                     
                     buildCategories()
@@ -77,10 +77,10 @@ struct CategoryList: View {
         }) {
             Image(systemName: "magnifyingglass") // SF Symbol icon
                 .resizable()
-                .frame(width: 24, height: 24) // Adjust size
+                .frame(width: 20, height: 20) // Adjust size
                 .foregroundColor(primary1) // Adjust color
         }
-        .padding()
+        .padding(13)
         .background(Color.black.opacity(0.1))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
