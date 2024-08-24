@@ -130,9 +130,8 @@ private struct DishItem : View{
                             .font(.callout)
                             
                     }
-                    Rectangle()
-                        .frame(width: 10)
-                        .foregroundColor(.clear)
+                    
+                    Spacer()
                     //image
                     if let imagePath = dish.image {
                         AsyncImage(url: URL(string: imagePath)){image in
