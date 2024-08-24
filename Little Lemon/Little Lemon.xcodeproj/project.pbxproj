@@ -26,6 +26,9 @@
 		E5CD213E2C77529100F152CE /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD213D2C77529100F152CE /* UIKit.swift */; };
 		E5CD21412C783A9700F152CE /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21402C783A9700F152CE /* CategoryList.swift */; };
 		E5CD21432C78AAA500F152CE /* UserProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21422C78AAA500F152CE /* UserProfileData.swift */; };
+		E5CD214B2C79AF7200F152CE /* AccountNameInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD214A2C79AF7200F152CE /* AccountNameInput.swift */; };
+		E5CD214D2C79B02100F152CE /* ContactInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD214C2C79B02100F152CE /* ContactInput.swift */; };
+		E5CD214F2C79B0EB00F152CE /* SubscriptionsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD214E2C79B0EB00F152CE /* SubscriptionsInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		E5CD213D2C77529100F152CE /* UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
 		E5CD21402C783A9700F152CE /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		E5CD21422C78AAA500F152CE /* UserProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileData.swift; sourceTree = "<group>"; };
+		E5CD214A2C79AF7200F152CE /* AccountNameInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNameInput.swift; sourceTree = "<group>"; };
+		E5CD214C2C79B02100F152CE /* ContactInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInput.swift; sourceTree = "<group>"; };
+		E5CD214E2C79B0EB00F152CE /* SubscriptionsInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +111,10 @@
 		E5CD21192C75F43C00F152CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E5CD21472C79AF3700F152CE /* UserProfileForms */,
+				E5CD21442C79A1CC00F152CE /* Onboarding */,
 				E5CD213F2C783A8800F152CE /* Menu */,
 				E5CD210D2C75F3FE00F152CE /* ContentView.swift */,
-				E5CD211C2C75F48000F152CE /* Onboarding.swift */,
 				E5CD21222C7611C700F152CE /* Home.swift */,
 				E5CD21262C7621B800F152CE /* UserProfile.swift */,
 				E5CD21332C76F6FF00F152CE /* Detail.swift */,
@@ -142,6 +149,24 @@
 				E5CD21402C783A9700F152CE /* CategoryList.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		E5CD21442C79A1CC00F152CE /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				E5CD211C2C75F48000F152CE /* Onboarding.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		E5CD21472C79AF3700F152CE /* UserProfileForms */ = {
+			isa = PBXGroup;
+			children = (
+				E5CD214A2C79AF7200F152CE /* AccountNameInput.swift */,
+				E5CD214C2C79B02100F152CE /* ContactInput.swift */,
+				E5CD214E2C79B0EB00F152CE /* SubscriptionsInput.swift */,
+			);
+			path = UserProfileForms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,13 +247,16 @@
 				E5CD211D2C75F48000F152CE /* Onboarding.swift in Sources */,
 				E5CD213A2C77491200F152CE /* Hero.swift in Sources */,
 				E5CD212A2C76DBE400F152CE /* FetchedObjects.swift in Sources */,
+				E5CD214B2C79AF7200F152CE /* AccountNameInput.swift in Sources */,
 				E5CD21412C783A9700F152CE /* CategoryList.swift in Sources */,
 				E5CD21232C7611C700F152CE /* Home.swift in Sources */,
 				E5CD210E2C75F3FE00F152CE /* ContentView.swift in Sources */,
+				E5CD214F2C79B0EB00F152CE /* SubscriptionsInput.swift in Sources */,
 				E5CD212F2C76DC9200F152CE /* MenuItem.swift in Sources */,
 				E5CD21322C76F01C00F152CE /* ExampleDatabase.xcdatamodeld in Sources */,
 				E5CD212D2C76DC8600F152CE /* MenuList.swift in Sources */,
 				E5CD213E2C77529100F152CE /* UIKit.swift in Sources */,
+				E5CD214D2C79B02100F152CE /* ContactInput.swift in Sources */,
 				E5CD210C2C75F3FE00F152CE /* Little_LemonApp.swift in Sources */,
 				E5CD21342C76F6FF00F152CE /* Detail.swift in Sources */,
 			);

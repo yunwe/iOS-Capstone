@@ -36,27 +36,6 @@ struct CustomTextFieldStyle: TextFieldStyle {
     }
 }
 
-struct LabelTextfield : View{
-    let label : String
-    let placeholder : String
-    let isDisabled : Bool
-    
-    @Binding var myText : String
-    
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-                    Text("\(label):")
-                        .font(.headline)
-                    
-                    TextField(placeholder, text: $myText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .disabled(isDisabled)
-                        
-                }
-    }
-}
-
 struct NameInput : View{
     @Binding var firstName : String
     @Binding var lastName : String

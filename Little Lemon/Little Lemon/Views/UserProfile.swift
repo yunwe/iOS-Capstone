@@ -15,40 +15,33 @@ struct UserProfile: View {
     @State private var accountName : String = ""
     @State private var isLoggedOut : Bool = false
     
+    @State private var showEmailError : Bool = false
+    @State private var showNameError : Bool = false
+    
     var body: some View {
         NavigationStack{
             ScrollView{
                 VStack{
-                    
                     profileImage
                     
-                    LabelTextfield(
-                        label: "Account Name",
-                        placeholder: "John",
-                        isDisabled: true,
-                        myText: $accountName
+                    AccountNameInput(accountName: $accountName, isDisabled: true)
+                    
+                    ContactInput(
+                        firstName: $profileData.firstName,
+                        lastName: $profileData.lastName,
+                        email: $profileData.email,
+                        showEmailError: $showEmailError,
+                        showNameError: $showNameError
                     )
                     
+                    SubscriptionsInput(profile: $profileData)
                     
-                    NameInput(
-                        firstName:$profileData.firstName,
-                        lastName: $profileData.lastName
-                    )
-                    
-                    LabelTextfield(
-                        label: "E-mail",
-                        placeholder: "johndoe@abc.com",
-                        isDisabled: false,
-                        myText: $profileData.email
-                    )
-                    
-                    notifications
                     actions
                 }
                 .padding()
                 
-            }
-        }
+            } //</ScrollView>
+        } //</NavigationStack>
         .navigationTitle("Personal information")
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -95,27 +88,6 @@ struct UserProfile: View {
         }
     }
     
-    private var notifications : some View{
-        VStack{
-            Text("E-mail Notifications:")
-                .font(.headline)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Toggle("Password Change", isOn: $profileData.passwordChangeNotification)
-                .toggleStyle(.switch)
-            
-            Toggle("Order Status", isOn: $profileData.orderStatusNotification)
-                .toggleStyle(.switch)
-            
-            Toggle("Special Offers", isOn: $profileData.specialOfferNotification)
-                .toggleStyle(.switch)
-            
-            Toggle("Newsletter", isOn: $profileData.newsletter)
-                .toggleStyle(.switch)
-            
-            
-        }
-    }
     
     private var actions : some View{
         HStack(){
