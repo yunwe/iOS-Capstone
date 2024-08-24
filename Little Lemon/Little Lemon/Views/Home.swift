@@ -48,13 +48,14 @@ struct Home: View {
                         .frame(width: 32, height: 32)
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                         .padding(.bottom)
-                        
+                    
                 }
             }
         }
-//        .toolbarBackground(myGrey, for: .navigationBar)
-//        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(myGrey, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
     }
+        
 }
 
 #Preview {

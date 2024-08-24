@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SubscriptionsInput: View {
     
-    @Binding var profile : UserProfileData
+    @Binding var profileData : UserProfileData
     
     var body: some View {
         VStack{
@@ -17,16 +17,16 @@ struct SubscriptionsInput: View {
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Toggle("Password Change", isOn: $profile.passwordChangeNotification)
+            Toggle("Password Change", isOn: $profileData.passwordChangeNotification)
                 .toggleStyle(.switch)
             
-            Toggle("Order Status", isOn: $profile.orderStatusNotification)
+            Toggle("Order Status", isOn: $profileData.orderStatusNotification)
                 .toggleStyle(.switch)
             
-            Toggle("Special Offers", isOn: $profile.specialOfferNotification)
+            Toggle("Special Offers", isOn: $profileData.specialOfferNotification)
                 .toggleStyle(.switch)
             
-            Toggle("Newsletter", isOn: $profile.newsletter)
+            Toggle("Newsletter", isOn: $profileData.newsletter)
                 .toggleStyle(.switch)
         }
     }

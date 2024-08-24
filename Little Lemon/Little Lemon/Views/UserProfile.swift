@@ -15,8 +15,11 @@ struct UserProfile: View {
     @State private var accountName : String = ""
     @State private var isLoggedOut : Bool = false
     
+    @State private var showAccountNameError : Bool = false
     @State private var showEmailError : Bool = false
     @State private var showNameError : Bool = false
+    
+    @State private var showToast : Bool = false
     
     var body: some View {
         NavigationStack{
@@ -24,7 +27,11 @@ struct UserProfile: View {
                 VStack{
                     profileImage
                     
-                    AccountNameInput(accountName: $accountName, isDisabled: true)
+                    AccountNameInput(
+                        accountName: $accountName,
+                        showError: $showAccountNameError,
+                        isDisabled: true
+                    )
                     
                     ContactInput(
                         firstName: $profileData.firstName,
@@ -34,10 +41,11 @@ struct UserProfile: View {
                         showNameError: $showNameError
                     )
                     
-                    SubscriptionsInput(profile: $profileData)
+                    SubscriptionsInput(profileData: $profileData)
                     
                     actions
                 }
+                .toast(isShowing: $showToast, message: "Save changes to disk!")
                 .padding()
                 
             } //</ScrollView>
@@ -53,6 +61,9 @@ struct UserProfile: View {
         }
         .onAppear{
             profileData = UserProfileData.load()
+            accountName = profileData.accountName
+            
+            print(accountName)
         }
     }
     
@@ -101,7 +112,12 @@ struct UserProfile: View {
             .cornerRadius(30)
             
             Button("Save"){
+                showToast = true
                 profileData.save()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    showToast = false
+                }
             }
             .buttonStyle(.borderedProminent)
             .tint(primary1)

@@ -18,18 +18,26 @@ struct ContactInput: View {
     
     
     var body: some View {
-        NameInput(
-            firstName: $firstName,
-            lastName: $lastName
-        )
-        
         VStack(alignment: .leading, spacing: 10) {
+            Text("Full Name:")
+                .font(.headline)
+            
+            HStack{
+                TextField("First Name", text: $firstName)
+                TextField("Last Name", text: $lastName)
+            }
+            if showNameError{
+                Text("Name cannot be empty.")
+                    .font(.callout)
+                    .foregroundStyle(.red)
+            }
+        
             Text("E-mail:")
                 .font(.headline)
             
-            TextField("johndoe@abc.com", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocorrectionDisabled()
+            TextField("E-mail", text: $email)
+                
+                .textInputAutocapitalization(.never)
             
             if showEmailError{
                 Text("Invalid E-mail format.")
@@ -37,6 +45,8 @@ struct ContactInput: View {
                     .foregroundStyle(.red)
             }
         }
+        .textFieldStyle(RoundedBorderTextFieldStyle())
+        .autocorrectionDisabled()
     }
 }
 

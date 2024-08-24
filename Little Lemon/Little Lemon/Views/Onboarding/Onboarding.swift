@@ -20,7 +20,7 @@ struct Onboarding: View {
     @State var isLoggedIn : Bool = false
     @State var pageIndex : Int = 0
     
-    
+    @State private var showAccountNameError : Bool = false
     @State private var showEmailError : Bool = false
     @State private var showNameError : Bool = false
     
@@ -31,8 +31,12 @@ struct Onboarding: View {
 
                 if(pageIndex == 0)
                 {
-                    AccountNameInput(accountName: $accountName, isDisabled: false)
-                        .padding()
+                    AccountNameInput(
+                        accountName: $accountName,
+                        showError: $showAccountNameError,
+                        isDisabled: false
+                    )
+                    .padding()
 
                 }
                 else if(pageIndex == 1)
@@ -47,7 +51,7 @@ struct Onboarding: View {
                     .padding()
                 }
                 else{
-                    SubscriptionsInput(profile: $profileData)
+                    SubscriptionsInput(profileData: $profileData)
                         .padding()
                     
                     registerButton
@@ -55,30 +59,16 @@ struct Onboarding: View {
                 Spacer()
                 footer
             }
+            .navigationDestination(isPresented: $isLoggedIn) {
+                Home()
+            }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationDestination(isPresented: $isLoggedIn) {
-            Home()
-        }
+
         .onAppear(){
             isLoggedIn = UserDefaults.standard.bool(forKey: kIsLoggedIn)
         }
-        .toolbar{
-            ToolbarItem(placement: .principal){
-                Text("Little Lemon")
-                    .font(.title)
-                    .foregroundStyle(.clear)
-                    .overlay{
-                        Image("Logo")
-                            .resizable()
-                            .scaledToFit()
-                    }
-                    .accessibilityElement(children: .combine)
-                    .accessibilityLabel("Little Lemon")
-                    .padding(.bottom)
-                
-            }
-        }
+        
         
     }
     
@@ -111,9 +101,7 @@ struct Onboarding: View {
             Spacer()
             
             Button(action: {
-                let newIndex = pageIndex + 1
-                pageIndex = newIndex < MAX_PAGES ? newIndex : MAX_PAGES - 1
-                
+                next()
             }) {
                 
                 Image(systemName: "arrow.forward")
@@ -125,6 +113,41 @@ struct Onboarding: View {
             .clipShape(Circle())
         }
         .padding()
+    }
+    
+    private func next() {
+        showAccountNameError = false
+        showEmailError = false
+        showNameError = false
+        
+        if pageIndex == 0{
+            if !Verification.isValidAccountName(accountName){
+                showAccountNameError = true
+                return
+            }
+        }
+        
+        if pageIndex == 1{
+            if Verification.isEmpty(profileData.firstName) ||
+                Verification.isEmpty(profileData.lastName){
+                showNameError = true
+            }
+            if !Verification.isValidEmail(profileData.email){
+                print(profileData.email)
+                showEmailError = true
+            }
+            if showNameError || showEmailError{
+                return
+            }
+        }
+        
+        if Verification.isEmpty(profileData.accountName){
+            profileData = UserProfileData(accountName: accountName.lowercased())
+        }
+        
+        let newIndex = pageIndex + 1
+        pageIndex = newIndex < MAX_PAGES ? newIndex : MAX_PAGES - 1
+        
     }
     
     private var registerButton : some View{
@@ -144,18 +167,8 @@ struct Onboarding: View {
     
     
     private func register(){
-//        if(Verification.isEmpty(firstName)
-//           || Verification.isEmpty(lastName)
-//           || Verification.isValidEmail(email)
-//        ){
-//            print("Invalid")
-//            return
-//        }
-//        
-//        UserDefaults.standard.set(firstName, forKey: kFirstName)
-//        UserDefaults.standard.set(lastName, forKey: kLastName)
-//        UserDefaults.standard.set(email, forKey: kEmail)
-//        
+        profileData.save()
+        
         UserDefaults.standard.set(true, forKey: kIsLoggedIn)
         isLoggedIn = true
     }

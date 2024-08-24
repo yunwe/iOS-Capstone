@@ -36,7 +36,7 @@ class UserProfileData {
     }
     
     static var empty : UserProfileData {
-         UserProfileData(accountName: "empty")
+         UserProfileData(accountName: "")
     }
     
     static func load() -> UserProfileData {
@@ -53,6 +53,7 @@ class UserProfileData {
     }
     
     func save() {
+        UserDefaults.standard.set(accountName, forKey: kAccountName)
         UserDefaults.standard.set(firstName, forKey: kFirstName)
         UserDefaults.standard.set(lastName, forKey: kLastName)
         UserDefaults.standard.set(email, forKey: kEmail)

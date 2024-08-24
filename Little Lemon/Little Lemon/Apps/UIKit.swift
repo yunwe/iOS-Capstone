@@ -36,23 +36,3 @@ struct CustomTextFieldStyle: TextFieldStyle {
     }
 }
 
-struct NameInput : View{
-    @Binding var firstName : String
-    @Binding var lastName : String
-    
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Full Name:")
-                .font(.headline)
-            
-            HStack{
-                TextField("First Name", text: $firstName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                TextField("Last Name", text: $lastName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-            }
-        }
-    }
-}

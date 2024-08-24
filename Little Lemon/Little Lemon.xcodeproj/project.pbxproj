@@ -29,6 +29,7 @@
 		E5CD214B2C79AF7200F152CE /* AccountNameInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD214A2C79AF7200F152CE /* AccountNameInput.swift */; };
 		E5CD214D2C79B02100F152CE /* ContactInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD214C2C79B02100F152CE /* ContactInput.swift */; };
 		E5CD214F2C79B0EB00F152CE /* SubscriptionsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD214E2C79B0EB00F152CE /* SubscriptionsInput.swift */; };
+		E5CD21512C79DE6B00F152CE /* Toasts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CD21502C79DE6B00F152CE /* Toasts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		E5CD214A2C79AF7200F152CE /* AccountNameInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNameInput.swift; sourceTree = "<group>"; };
 		E5CD214C2C79B02100F152CE /* ContactInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInput.swift; sourceTree = "<group>"; };
 		E5CD214E2C79B0EB00F152CE /* SubscriptionsInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsInput.swift; sourceTree = "<group>"; };
+		E5CD21502C79DE6B00F152CE /* Toasts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toasts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				E5CD21202C75FAF400F152CE /* Verification.swift */,
 				E5CD213D2C77529100F152CE /* UIKit.swift */,
+				E5CD21502C79DE6B00F152CE /* Toasts.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				E5CD210E2C75F3FE00F152CE /* ContentView.swift in Sources */,
 				E5CD214F2C79B0EB00F152CE /* SubscriptionsInput.swift in Sources */,
 				E5CD212F2C76DC9200F152CE /* MenuItem.swift in Sources */,
+				E5CD21512C79DE6B00F152CE /* Toasts.swift in Sources */,
 				E5CD21322C76F01C00F152CE /* ExampleDatabase.xcdatamodeld in Sources */,
 				E5CD212D2C76DC8600F152CE /* MenuList.swift in Sources */,
 				E5CD213E2C77529100F152CE /* UIKit.swift in Sources */,
