@@ -35,6 +35,10 @@ class UserProfileData {
         self.accountName = accountName
     }
     
+    static var empty : UserProfileData {
+         UserProfileData(accountName: "empty")
+    }
+    
     static func load() -> UserProfileData {
         let profileData = UserProfileData(accountName: UserDefaults.standard.string(forKey: kAccountName) ?? "")
         profileData.firstName = UserDefaults.standard.string(forKey: kFirstName) ?? ""

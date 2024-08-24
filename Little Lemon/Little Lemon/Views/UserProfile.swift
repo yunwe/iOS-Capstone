@@ -10,35 +10,17 @@ import SwiftUI
 struct UserProfile: View {
     @Environment(\.presentationMode) var presentation
     
-    @State private var accountName : String = "acco"
-    @State private var firstName : String = ""
-    @State private var lastName : String = ""
-    @State private var email : String = ""
     
+    @State private var profileData : UserProfileData = UserProfileData.empty
+    @State private var accountName : String = ""
+    @State private var isLoggedOut : Bool = false
     
     var body: some View {
-        NavigationView(content: {
-            
+        NavigationStack{
             ScrollView{
                 VStack{
                     
-                    HStack(alignment: .bottom){
-                        Image("profile-image-placeholder")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 140, height: 140)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                        VStack{
-                            Button("Change"){
-                                
-                            }
-                            
-                            Button("Remove"){
-                                
-                            }
-                        }
-                    }
-                    
+                    profileImage
                     
                     LabelTextfield(
                         label: "Account Name",
@@ -48,75 +30,121 @@ struct UserProfile: View {
                     )
                     
                     
-                    NameInput(firstName: $firstName, lastName: $lastName)
+                    NameInput(
+                        firstName:$profileData.firstName,
+                        lastName: $profileData.lastName
+                    )
                     
                     LabelTextfield(
                         label: "E-mail",
                         placeholder: "johndoe@abc.com",
                         isDisabled: false,
-                        myText: $email
+                        myText: $profileData.email
                     )
                     
-                    
-                    
-                    HStack{
-                        Button("Discard Changes"){
-                            
-                        }
-                        .buttonStyle(.bordered)
-                        .tint(primary1)
-                        .cornerRadius(30)
-                        
-                        Button("Save"){
-                            
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(primary1)
-                        .cornerRadius(30)
-                        
-                    }
-                    
-                    Rectangle()
-                        .fill(.clear)
-                        .frame(height: 10)
-                        
-                    Divider()
-                        .frame(height: 1)
-                        .overlay(primary1)
-                    
-                    
-                    Button(action: {
-                        
-                        UserDefaults.standard.set(false, forKey: kIsLoggedIn)
-                        
-                        //it will automatically tell the NavigationView
-                        //to go back to the previous screen
-                        self.presentation.wrappedValue.dismiss()
-                    }) {
-                        Text("Logout")
-                            .bold()
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 10)
-                    }
-                    .foregroundColor(primary1)
-                    .background(primary2)
-                    .cornerRadius(30)
-                    .padding(.top, 10)
-                    
-                    
-                    
-                    
-                   
+                    notifications
+                    actions
                 }
                 .padding()
                 
             }
-        })
+        }
         .navigationTitle("Personal information")
+        .toolbar{
+            ToolbarItem(placement: .navigationBarTrailing) {
+                logoutButton
+            }
+        }
+        .navigationDestination(isPresented: $isLoggedOut) {
+            Onboarding()
+        }
         .onAppear{
+            profileData = UserProfileData.load()
+        }
+    }
+    
+    private var profileImage : some View{
+        ZStack(alignment: .bottom)
+        {
+            Image("profile-image-placeholder")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 140, height: 160)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+            
+            
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                HStack{
+                    Image(systemName: "pencil")
+                    Text("Edit")
+                        
+                }
+                
+            })
+            .foregroundColor(.white)
+            .padding(.vertical, 5)
+            .fontWeight(.medium)
+            .frame(maxWidth: 140)
+            .background(primary1.opacity(0.86))
+            .clipShape(
+                UnevenRoundedRectangle(
+                    bottomLeadingRadius: 16,
+                    bottomTrailingRadius: 16
+                )
+            )
+        }
+    }
+    
+    private var notifications : some View{
+        VStack{
+            Text("E-mail Notifications:")
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Toggle("Password Change", isOn: $profileData.passwordChangeNotification)
+                .toggleStyle(.switch)
+            
+            Toggle("Order Status", isOn: $profileData.orderStatusNotification)
+                .toggleStyle(.switch)
+            
+            Toggle("Special Offers", isOn: $profileData.specialOfferNotification)
+                .toggleStyle(.switch)
+            
+            Toggle("Newsletter", isOn: $profileData.newsletter)
+                .toggleStyle(.switch)
+            
             
         }
     }
+    
+    private var actions : some View{
+        HStack(){
+            Spacer()
+            
+            Button("Discard Changes"){
+                profileData = UserProfileData.load()
+            }
+            .buttonStyle(.bordered)
+            .tint(primary1)
+            .cornerRadius(30)
+            
+            Button("Save"){
+                profileData.save()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(primary1)
+            .cornerRadius(30)
+        }
+        .padding(.top, 10)
+    }
+    
+    private var logoutButton : some View{
+        Button("Logout"){
+            UserDefaults.standard.set(false, forKey: kIsLoggedIn)
+            isLoggedOut = true
+        }
+    }
+    
 }
 
 

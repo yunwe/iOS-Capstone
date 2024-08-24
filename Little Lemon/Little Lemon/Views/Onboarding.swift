@@ -35,33 +35,29 @@ struct Onboarding: View {
                 
             }
             .padding()
+            .navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $isLoggedIn) {
                 Home()
             }
             .onAppear(){
                 isLoggedIn = UserDefaults.standard.bool(forKey: kIsLoggedIn)
-                
             }
-            
         }
-
-        
-        
     }
     
     private func register(){
-        if(Verification.isEmpty(firstName)
-           || Verification.isEmpty(lastName)
-           || Verification.isValidEmail(email)
-        ){
-            print("Invalid")
-            return
-        }
-        
-        UserDefaults.standard.set(firstName, forKey: kFirstName)
-        UserDefaults.standard.set(lastName, forKey: kLastName)
-        UserDefaults.standard.set(email, forKey: kEmail)
-        
+//        if(Verification.isEmpty(firstName)
+//           || Verification.isEmpty(lastName)
+//           || Verification.isValidEmail(email)
+//        ){
+//            print("Invalid")
+//            return
+//        }
+//        
+//        UserDefaults.standard.set(firstName, forKey: kFirstName)
+//        UserDefaults.standard.set(lastName, forKey: kLastName)
+//        UserDefaults.standard.set(email, forKey: kEmail)
+//        
         UserDefaults.standard.set(true, forKey: kIsLoggedIn)
         isLoggedIn = true
     }
